@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     increment(){
+      // this.totalNumber += 1 => 子から親のdataを変更できない
       this.$emit("my-click", this.totalNumber + 1);
     }
   }
