@@ -15,12 +15,34 @@
         <label for="title">タイトル</label>
         <input id="title" type="text" v-model.lazy="eventData.title">
         <pre>{{ eventData.title }}</pre>
+
         <label for="maxNumber">最大人数</label>
         <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
         <p>{{ eventData.maxNumber }}</p>
+
         <label for="host">主催者</label>
         <input id="host" type="text" v-model.trim="eventData.host">
         <p>{{ eventData.host }}</p>
+
+        <label for="detail">イベントの内容</label>
+        <textarea id="detail" cols="30" rows="10" type="text" v-model.trim="eventData.detail"></textarea>
+        <p style="white-space: pre">{{ eventData.detail }}</p>
+
+        <label for="isPrivate">非公開</label>
+        <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
+        <p>{{ eventData.isPrivate }}</p>
+
+        <p>参加条件</p>
+        <input type="checkbox" id="10" value="10代" v-model="eventData.target">
+        <label for="10">10代</label>
+
+        <input type="checkbox" id="20" value="20代" v-model="eventData.target">
+        <label for="20">20代</label>
+
+        <input type="checkbox" id="30" value="30代" v-model="eventData.target">
+        <label for="30">30代</label>
+
+        <p>{{ eventData.target }}</p>
     </div>
   </div>
 </template>
@@ -36,9 +58,12 @@ export default{
       number: 14,
       currentComponent: "Home",
       eventData: {
-        title: "タイトル",
+        title: "",
         maxNumber: 0,
-        host: "host"
+        host: "",
+        detail: "",
+        isPrivate: false,
+        target: []
       }
     }
   },
