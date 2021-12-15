@@ -10,6 +10,12 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
+    <div>
+      <h2>イベントのフォーム</h2>
+      <label for="title">タイトル</label>
+      <input id="title" type="text" v-model="eventData.title">
+      <p>{{ eventData.title }}</p>
+    </div>
   </div>
 </template>
 
@@ -22,7 +28,10 @@ export default{
   data(){
     return {
       number: 14,
-      currentComponent: "Home"
+      currentComponent: "Home",
+      eventData: {
+        title: "タイトル"
+      }
     }
   },
   components:{
@@ -37,9 +46,3 @@ export default{
   }
 }
 </script>
-
-<style scoped>
-div {
-  border: 1px solid blue;
-}
-</style>
