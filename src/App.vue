@@ -10,7 +10,7 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
-    <div>
+    <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
         <label for="title">タイトル</label>
         <input id="title" type="text" v-model.lazy="eventData.title">
@@ -41,8 +41,18 @@
 
         <input type="checkbox" id="30" value="30代" v-model="eventData.target">
         <label for="30">30代</label>
-
         <p>{{ eventData.target }}</p>
+
+        <input type="radio" id="free" value="無料" v-model="eventData.price">
+        <label for="free">無料</label>
+        <input type="radio" id="paid" value="有料" v-model="eventData.price">
+        <label for="paid">有料</label>
+
+        <!-- <p>開催場所</p>
+        <select v-model="eventData.location">
+          <option v-for="location in locations" :key="location">{{ location }}</option>
+        </select>
+        <p>{{ eventData.location }}</p> -->
     </div>
   </div>
 </template>
@@ -63,7 +73,9 @@ export default{
         host: "",
         detail: "",
         isPrivate: false,
-        target: []
+        target: [],
+        price: "free",
+        locations: ["東京", "大阪", "名古屋"]
       }
     }
   },
