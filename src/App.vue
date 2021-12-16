@@ -12,8 +12,13 @@
     </keep-alive>
     <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
-        <label for="title">タイトル</label>
+        <!-- <label for="title">タイトル</label>
         <input id="title" type="text" v-model.lazy="eventData.title">
+        <pre>{{ eventData.title }}</pre> -->
+
+        <!-- v-model別の書き方 -->
+        <label for="title">タイトル</label>
+        <input id="title" type="text" :value="eventData.title"  @input="eventData.title = $event.target.value">
         <pre>{{ eventData.title }}</pre>
 
         <label for="maxNumber">最大人数</label>
@@ -48,11 +53,11 @@
         <input type="radio" id="paid" value="有料" v-model="eventData.price">
         <label for="paid">有料</label>
 
-        <!-- <p>開催場所</p>
+        <p>開催場所</p>
         <select v-model="eventData.location">
           <option v-for="location in locations" :key="location">{{ location }}</option>
         </select>
-        <p>{{ eventData.location }}</p> -->
+        <p>{{ eventData.location }}</p>
     </div>
   </div>
 </template>
@@ -67,6 +72,7 @@ export default{
     return {
       number: 14,
       currentComponent: "Home",
+      locations: ["東京", "大阪", "名古屋"],
       eventData: {
         title: "",
         maxNumber: 0,
@@ -74,8 +80,8 @@ export default{
         detail: "",
         isPrivate: false,
         target: [],
-        price: "free",
-        locations: ["東京", "大阪", "名古屋"]
+        price: "無料",
+        location: []
       }
     }
   },
