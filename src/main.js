@@ -8,6 +8,16 @@ import LikeNumber from './components/LikeNumber.vue'
 Vue.config.productionTip = false
 Vue.component('LikeNumber', LikeNumber);
 
+// カスタムディレクティブ(グローバル)
+Vue.directive("border", {
+  bind(el, binding, vnode) {},
+  insert(el, binding, vnode) {},
+  update(el, binding, vnode, oldVnode) {},
+  componentUpdated(el, binding, vnode, oldVnode) {},
+  unbind(el, binding, vnode) {}
+});
+
+
 // console.log(App);
 
 new Vue({
