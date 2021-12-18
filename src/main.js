@@ -9,12 +9,12 @@ Vue.config.productionTip = false
 Vue.component('LikeNumber', LikeNumber);
 
 // カスタムディレクティブ(グローバル)
-Vue.directive("border", {
-  bind(el, binding, vnode) {},
-  insert(el, binding, vnode) {},
-  update(el, binding, vnode, oldVnode) {},
-  componentUpdated(el, binding, vnode, oldVnode) {},
-  unbind(el, binding, vnode) {}
+Vue.directive("border", function(el, binding) {
+  el.style.border = "solid black 2px";
+
+  // カスタムディレクティブからデータを渡す
+  el.style.borderWidth = binding.value.width;
+  el.style.borderColor = binding.value.color;
 });
 
 
