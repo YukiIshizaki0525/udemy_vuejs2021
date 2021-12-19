@@ -1,6 +1,10 @@
 <template>
   <!-- // 複数の場合はオブジェクトで指定 -->
-  <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
+  <div>
+    <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
+    <h2>{{ title | upperCase }}</h2>
+    <p>{{ subTitle | upperCase }}</p>
+  </div>
 </template>
 
 <!-- カスタムディレクティブのローカル登録 -->
@@ -8,7 +12,9 @@
 export default {
   data(){
     return {
-      tmpData: 'hello'
+      tmpData: 'hello',
+      title: 'Welcome to Tokyo',
+      subTitle: 'Tokyo is great city.'
     }
   },
   directives: {
