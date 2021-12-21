@@ -3,7 +3,7 @@
   <div>
     <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
     <h2>{{ title | upperCase }}</h2>
-    <p>{{ subTitle | upperCase }}</p>
+    <p>{{ subTitle | lowerCase }}</p>
   </div>
 </template>
 
@@ -15,6 +15,12 @@ export default {
       tmpData: 'hello',
       title: 'Welcome to Tokyo',
       subTitle: 'Tokyo is great city.'
+    }
+  },
+  // フィルター機能(ローカル)
+  filters: {
+    lowerCase(value) {
+      return value.lowerCase();
     }
   },
   directives: {

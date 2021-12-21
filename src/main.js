@@ -26,7 +26,7 @@ Vue.component('LikeNumber', LikeNumber);
 //   }
 // });
 
-// フィルター機能
+// フィルター機能(グローバル登録)
 Vue.filter("upperCase", function(value) {
   return value.toUpperCase();
 });
