@@ -1,15 +1,26 @@
 <template>
   <!-- // 複数の場合はオブジェクトで指定 -->
-  <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
+  <div>
+    <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
+    <h2>{{ title | upperCase }}</h2>
+    <p>{{ subTitle | lowerCase }}</p>
+    <CountNumber></CountNumber>
+  </div>
 </template>
 
 <!-- カスタムディレクティブのローカル登録 -->
 <script>
+import CountNumber from "./CountNumber.vue";
+import { tokyoNumber } from "@/tokyoNumber";
 export default {
+  mixins: [tokyoNumber],
   data(){
     return {
       tmpData: 'hello'
     }
+  },
+  components: {
+    CountNumber
   },
   directives: {
     border(el, binding){
