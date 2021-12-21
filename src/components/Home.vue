@@ -4,24 +4,23 @@
     <p v-border:solid.round.shadow="{width: '3px', color: 'red'}">{{ tmpData }}</p>
     <h2>{{ title | upperCase }}</h2>
     <p>{{ subTitle | lowerCase }}</p>
+    <CountNumber></CountNumber>
   </div>
 </template>
 
 <!-- カスタムディレクティブのローカル登録 -->
 <script>
+import CountNumber from "./CountNumber.vue";
+import { tokyoNumber } from "@/tokyoNumber";
 export default {
+  mixins: [tokyoNumber],
   data(){
     return {
-      tmpData: 'hello',
-      title: 'Welcome to Tokyo',
-      subTitle: 'Tokyo is great city.'
+      tmpData: 'hello'
     }
   },
-  // フィルター機能(ローカル)
-  filters: {
-    lowerCase(value) {
-      return value.lowerCase();
-    }
+  components: {
+    CountNumber
   },
   directives: {
     border(el, binding){
