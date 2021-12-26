@@ -19,22 +19,22 @@ export default {
 
 <style scoped>
 .fade-enter {
-
+  opacity: 0;
 }
 .fade-enter-active {
-
+  transition: opacity 0.5s;
 }
 .fade-enter-to {
-
+  opacity: 1;
 }
 .fade-leave {
-
+  opacity: 1;
 }
 .fade-leave-active {
-
+  transition: opacity 0.5s;
 }
 .fade-leave-to {
-  
+  opacity: 0;
 }
 .main {
   width: 70%;
