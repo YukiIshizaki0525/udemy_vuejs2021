@@ -5,6 +5,10 @@
     <p>{{ myAnimation }}</p>
 
     <button @click="show = !show">切り替え</button>
+    <transition name="fade" mode="out-in">
+      <p v-if="show" key="bye">さようなら</p>
+      <p v-else key="hello">こんにちは</p>
+    </transition>
     <transition :name="myAnimation" appear type="animation" enter-class="" enter-active-class="animated bounce" enter-to-class="" leave-class="" leave-to-class="">
       <p v-if="show">hello</p>
     </transition>
