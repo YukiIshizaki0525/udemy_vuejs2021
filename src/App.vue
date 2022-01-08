@@ -3,8 +3,16 @@
     <button @click="myAnimation = 'silde'">Slide</button>
     <button @click="myAnimation = 'fade'">Fade</button>
     <p>{{ myAnimation }}</p>
-
     <button @click="show = !show">切り替え</button>
+    <br><br>
+    <transition
+      :css="false"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @leave="leave"
+    >
+      <div class="circle" v-if="show"></div>
+    </transition>
     <br>
     <button @click="myComponent = 'ComponentA'">ComponentA</button>
     <button @click="myComponent = 'ComponentB'">ComponentB</button>
@@ -41,11 +49,45 @@ export default {
       myAnimation: 'slide',
       myComponent: 'ComponentA'
     }
+  },
+  methods: {
+    beforeEnter(el){
+      el.style.transform = 'scale(0)'
+    },
+    enter(el, done){
+      let scale = 0;
+      const interval = setInterval(() => {
+        el.style.transform = `scale(${scale})`;
+        scale += 0.1
+        if (scale > 1) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
+    leave(el, done){
+      let scale = 1;
+      const interval = setInterval(() => {
+        el.style.transform = `scale(${scale})`;
+        scale -= 0.1
+        if (scale < 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
   }
 }
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 100px;
+  background: deeppink;
+}
 .fade-enter {
   opacity: 0;
 }
